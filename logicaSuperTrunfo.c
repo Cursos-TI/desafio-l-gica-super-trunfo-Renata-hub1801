@@ -4,7 +4,11 @@
 
 int main() {
     int escolhaJogador, escolhaComputador;
+    int escolha1, escolha2;
     int vencedor = 0;
+    int pontosCarta1 = 0;
+    int pontosCarta2 = 0;
+
 
     srand((unsigned int) time(0));
 
@@ -39,9 +43,8 @@ int main() {
     printf("6. Densidade Populacional\n");
     printf("Escolha: ");
     scanf("%d", &escolhaJogador);
-
-    escolhaComputador = rand() % 6 + 1;
-
+    
+   
     switch (escolhaJogador) {
         case 1:
             printf("Jogador: Populacao\n");
@@ -62,9 +65,10 @@ int main() {
             printf("Jogador: Densidade Populacional\n");
             break;
         default:
-            printf("Opcao invalida para o jogador\n");
             return 1;
     }
+
+    escolhaComputador = rand() % 6 + 1;
 
     switch (escolhaComputador) {
         case 1:
@@ -88,7 +92,17 @@ int main() {
         default:
             printf("Opcao invalida para o computador\n");
             return 1;
+             
     }
+
+         printf("Escolha o PRIMEIRO atributo: ");
+            scanf("%d", &escolha1);
+
+            printf("Escolha o SEGUNDO atributo: ");
+            scanf("%d", &escolha2);
+            escolhaComputador = rand() % 6 + 1;
+
+
 
     printf("===== SUPER TRUNFO =====\n\n");
 
@@ -180,6 +194,17 @@ int main() {
         printf("As duas cidades tem igual densidade populacional\n");
     }
 
+       if(populacao1 > populacao2)
+             pontosCarta1++;
+      else if(populacao1 < populacao2)
+             pontosCarta2++;
+
+        if(area1 > area2)
+            pontosCarta1++;
+      else if(area1 < area2)
+             pontosCarta2++;
+
+
     printf("\n=== Resultado da escolha do jogador ===\n");
     switch (escolhaJogador) {
         case 1:
@@ -215,6 +240,18 @@ int main() {
     } else {
         printf("Empate! As duas cartas tem valores iguais para a escolha atual.\n");
     }
+    
+    printf("\nPontos da Carta 1: %d\n", pontosCarta1);
+    printf("Pontos da Carta 2: %d\n", pontosCarta2);
+
+if(pontosCarta1 > pontosCarta2)
+    printf("Carta 1 venceu no modo mestre!\n");
+
+else if(pontosCarta2 > pontosCarta1)
+    printf("Carta 2 venceu no modo mestre!\n");
+
+else
+    printf("Empate no modo mestre!\n");
 
     printf("Fim do jogo. Obrigado por jogar Super Trunfo - Paises!\n");
     return 0;
